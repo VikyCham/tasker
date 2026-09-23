@@ -1,4 +1,4 @@
-module github.com/sriniously/go-boilerplate
+module github.com/VikyCham/tasker
 
 go 1.24.5
 

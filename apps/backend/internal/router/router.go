@@ -3,12 +3,12 @@ package router
 import (
 	"net/http"
 
+	"github.com/VikyCham/tasker/internal/handler"
+	"github.com/VikyCham/tasker/internal/middleware"
+	"github.com/VikyCham/tasker/internal/server"
+	"github.com/VikyCham/tasker/internal/service"
 	"github.com/labstack/echo/v4"
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
-	"github.com/sriniously/go-boilerplate/internal/handler"
-	"github.com/sriniously/go-boilerplate/internal/middleware"
-	"github.com/sriniously/go-boilerplate/internal/server"
-	"github.com/sriniously/go-boilerplate/internal/service"
 	"golang.org/x/time/rate"
 )
 

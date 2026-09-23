@@ -3,10 +3,10 @@ package testing
 import (
 	"time"
 
+	"github.com/VikyCham/tasker/internal/config"
+	"github.com/VikyCham/tasker/internal/database"
+	"github.com/VikyCham/tasker/internal/server"
 	"github.com/rs/zerolog"
-	"github.com/sriniously/go-boilerplate/internal/config"
-	"github.com/sriniously/go-boilerplate/internal/database"
-	"github.com/sriniously/go-boilerplate/internal/server"
 )
 
 // CreateTestServer creates a server instance for testing

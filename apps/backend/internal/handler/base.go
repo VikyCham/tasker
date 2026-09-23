@@ -3,12 +3,12 @@ package handler
 import (
 	"time"
 
+	"github.com/VikyCham/tasker/internal/middleware"
+	"github.com/VikyCham/tasker/internal/server"
+	"github.com/VikyCham/tasker/internal/validation"
 	"github.com/labstack/echo/v4"
 	"github.com/newrelic/go-agent/v3/integrations/nrpkgerrors"
 	"github.com/newrelic/go-agent/v3/newrelic"
-	"github.com/sriniously/go-boilerplate/internal/middleware"
-	"github.com/sriniously/go-boilerplate/internal/server"
-	"github.com/sriniously/go-boilerplate/internal/validation"
 )
 
 // Handler provides base functionality for all handlers
