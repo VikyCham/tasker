@@ -1,12 +1,7 @@
 -- Write your migrate up statements here
 
----- create above / drop below ----
-
--- Write your migrate down statements here. If this migration is irreversible
--- Then delete the separator line above.
-
 CREATE TABLE todo_categories (
-    id UUID PRIMARY_KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -22,10 +17,10 @@ CREATE UNIQUE INDEX todo_categories_unique_name ON todo_categories(user_id, name
 CREATE TRIGGER set_updated_at_todo_categories
     BEFORE UPDATE ON todo_categories
     FOR EACH ROW
-    EXECUTE FUNCTION tigger_set_updated_at();
+    EXECUTE FUNCTION trigger_set_updated_at();
 
 CREATE TABLE todos (
-    id UUID PRIMARY_KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -52,10 +47,10 @@ CREATE INDEX idx_todos_due_date ON todos(due_date);
 CREATE TRIGGER set_update_at_todos
     BEFORE UPDATE ON todos
     FOR EACH ROW
-    EXECUTE FUNCTION trigger_set_update_at();
+    EXECUTE FUNCTION trigger_set_updated_at();
 
 CREATE TABLE todo_comments (
-    id UUID PRIMARY_KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMP(3) WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP(3) WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -70,7 +65,7 @@ CREATE INDEX idx_todo_comments_user_id ON todo_comments(user_id);
 CREATE TRIGGER set_update_at_todo_comments
     BEFORE UPDATE ON todo_comments
     FOR EACH ROW
-    EXECUTE FUNCTION trigger_set_update_at();
+    EXECUTE FUNCTION trigger_set_updated_at();
 
 -- Constraints
 ALTER TABLE todos
@@ -82,3 +77,8 @@ CREATE INDEX idx_todos_hierarchy ON todos(parent_todo_id, sort_order);
 
 -- Complete index for user todos with status and priority
 CREATE INDEX idx_todos_user_status_priority ON todos(user_id, status, priority);
+
+---- create above / drop below ----
+
+-- Write your migrate down statements here. If this migration is irreversible
+-- Then delete the separator line above.

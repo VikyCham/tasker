@@ -1,12 +1,7 @@
 -- Write your migrate up statements here
 
----- create above / drop below ----
-
--- Write your migrate down statements here. If this migration is irreversible
--- Then delete the separator line above.
-
 CREATE TABLE todo_attachments (
-    id UUID PRIMARY_KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMP(3) WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP(3) WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -27,3 +22,8 @@ CREATE TRIGGER set_updated_at_todo_attachments
     BEFORE UPDATE ON todo_attachments
     FOR EACH ROW
     EXECUTE FUNCTION trigger_set_updated_at();
+
+---- create above / drop below ----
+
+-- Write your migrate down statements here. If this migration is irreversible
+-- Then delete the separator line above.

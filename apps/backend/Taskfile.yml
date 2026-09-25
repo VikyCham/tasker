@@ -39,7 +39,7 @@ tasks:
 
   migrations:up:
     desc: apply all up database migrations
-    deps: [ confirm ]
+    pormpt: Are you sure you want to run database migration?
     cmds:
     - echo 'Running up migrations...'
     - tern migrate -m ./internal/database/migrations --conn-string {{.TASKER_DB_DSN}}
