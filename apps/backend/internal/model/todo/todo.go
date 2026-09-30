@@ -42,10 +42,10 @@ type Todo struct {
 }
 
 type Metadata struct {
-	Tags 		[]string `json:"tags"`
-	Reminder    *string  `json:"reminder"`
-	Color       *string  `json:"color"`
-	Difficulty  *int     `json:"difficulty"`
+	Tags       []string `json:"tags"`
+	Reminder   *string  `json:"reminder"`
+	Color      *string  `json:"color"`
+	Difficulty *int     `json:"difficulty"`
 }
 
 type PopulatedTodo struct {

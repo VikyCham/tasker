@@ -27,19 +27,19 @@ func (p *CreateTodoPayload) Validate() error {
 // update
 
 type UpdateTodoPayload struct {
-	ID           uuid.UUID    `param:"id" validate:"required,uuid"`
-	Title   	 *string      `json:"title" validate:"omitempty,min=1,max=255"`
-	Description  *string      `json:"description" validate:"omitempty,max=1000"`
-	Status       *Status 	  `json:"status" validate:"omitempty,oneof=draft active completed archived"`
-	Priority     *Priority    `json:"priority" validate:"omitempty,oneof=low medium high"`
-	DueDate      *time.Time   `json:"dueDate"`
-	ParentTodoID *uuid.UUID   `json:"parentTodoId" validate:"omitempty,uuid"`
-	CategoryID   *uuid.UUID   `json:"categoryId" validate:"omitempty,uuid"`
-	Metadata     *Metadata    `json:"metadata"`
+	ID           uuid.UUID  `param:"id" validate:"required,uuid"`
+	Title        *string    `json:"title" validate:"omitempty,min=1,max=255"`
+	Description  *string    `json:"description" validate:"omitempty,max=1000"`
+	Status       *Status    `json:"status" validate:"omitempty,oneof=draft active completed archived"`
+	Priority     *Priority  `json:"priority" validate:"omitempty,oneof=low medium high"`
+	DueDate      *time.Time `json:"dueDate"`
+	ParentTodoID *uuid.UUID `json:"parentTodoId" validate:"omitempty,uuid"`
+	CategoryID   *uuid.UUID `json:"categoryId" validate:"omitempty,uuid"`
+	Metadata     *Metadata  `json:"metadata"`
 }
 
 func (p *UpdateTodoPayload) Validate() error {
-	validate:= validator.New()
+	validate := validator.New()
 	return validate.Struct(p)
 }
 
@@ -130,8 +130,8 @@ func (p *UploadTodoAttachmentPayload) Validate() error {
 
 // delete
 type DeleteTodoAttachmentPayload struct {
-	TodoID        uuid.UUID `param:"id" validate:"required,uuid"`
-	AttachmentID  uuid.UUID `param:"attachmentId" validate:"required,uuid"`
+	TodoID       uuid.UUID `param:"id" validate:"required,uuid"`
+	AttachmentID uuid.UUID `param:"attachmentId" validate:"required,uuid"`
 }
 
 func (p *DeleteTodoAttachmentPayload) Validate() error {
@@ -141,14 +141,11 @@ func (p *DeleteTodoAttachmentPayload) Validate() error {
 
 // get
 type GetAttachmentPresignedURLPayload struct {
-	TodoID        uuid.UUID `param:"id" validate:"required,uuid"`
-	AttachmentID  uuid.UUID `param:"attachmentId" validate:"required,uuid"`
+	TodoID       uuid.UUID `param:"id" validate:"required,uuid"`
+	AttachmentID uuid.UUID `param:"attachmentId" validate:"required,uuid"`
 }
 
 func (p *GetAttachmentPresignedURLPayload) Validate() error {
 	validate := validator.New()
 	return validate.Struct(p)
 }
-
-
-

@@ -11,13 +11,13 @@ import (
 )
 
 type CategoryService struct {
-	server *server.Server
+	server       *server.Server
 	categoryRepo *repository.CategoryRepository
 }
 
 func NewCategoryService(server *server.Server, categoryRepo *repository.CategoryRepository) *CategoryService {
 	return &CategoryService{
-		server: server,
+		server:       server,
 		categoryRepo: categoryRepo,
 	}
 }
